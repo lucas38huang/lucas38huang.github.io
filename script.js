@@ -1,61 +1,73 @@
-// SPA Navigation Logic
-function navigateTo(sectionId) {
-    // Hide all sections
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        section.classList.remove('active');
+// Single-page scrolling navigation
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.scroll-section');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const targetId = link.getAttribute('data-target');
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+            // Update active nav link
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            
+            // Scroll to section
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
+});
+
+// Update active nav link based on scroll position
+window.addEventListener('scroll', () => {
+    let currentSection = '';
     
-    // Show the selected section
-    const selectedSection = document.getElementById(sectionId);
-    if (selectedSection) {
-        selectedSection.classList.add('active');
-    }
-    
-    // Update button states
-    const navButtons = document.querySelectorAll('.nav-button');
-    navButtons.forEach(button => {
-        button.classList.remove('active');
-        if (button.getAttribute('data-section') === sectionId) {
-            button.classList.add('active');
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 200; // Offset for header
+        if (window.scrollY >= sectionTop) {
+            currentSection = section.getAttribute('id');
         }
     });
     
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-target') === currentSection) {
+            link.classList.add('active');
+        }
+    });
+});
 
-// Keyboard navigation
+// Keyboard navigation (arrow keys)
 document.addEventListener('keydown', (e) => {
-    const sections = ['profile', 'projects', 'works', 'awards', 'materials'];
-    const currentSection = document.querySelector('.section.active')?.id;
-    const currentIndex = sections.indexOf(currentSection);
+    const sectionIds = ['profile', 'projects', 'works', 'awards', 'materials'];
+    let currentIndex = -1;
     
-    if (e.key === 'ArrowRight') {
-        const nextIndex = (currentIndex + 1) % sections.length;
-        navigateTo(sections[nextIndex]);
-    } else if (e.key === 'ArrowLeft') {
-        const prevIndex = (currentIndex - 1 + sections.length) % sections.length;
-        navigateTo(sections[prevIndex]);
-    }
-});
-
-// Add scroll animation on load
-window.addEventListener('load', () => {
-    console.log('🎮 ARCADE PORTFOLIO LOADED');
-    console.log('💡 TIP: Use arrow keys (← →) to navigate between sections!');
-});
-
-// Smooth page transition on anchor clicks
-document.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A' && e.target.getAttribute('href')?.startsWith('#')) {
+    navLinks.forEach((link, index) => {
+        if (link.classList.contains('active')) {
+            currentIndex = index;
+        }
+    });
+    
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
         e.preventDefault();
-        const targetId = e.target.getAttribute('href').substring(1);
-        navigateTo(targetId);
+        const nextIndex = Math.min(currentIndex + 1, navLinks.length - 1);
+        navLinks[nextIndex].click();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const prevIndex = Math.max(currentIndex - 1, 0);
+        navLinks[prevIndex].click();
     }
 });
 
-// Observer for fade-in animations on scroll
+// Set initial active state
+window.addEventListener('load', () => {
+    console.log('🚀 Portfolio loaded - Explore my narrative design work');
+    console.log('💡 TIP: Use arrow keys (↑ ↓ ← →) to navigate between sections!');
+});
+
+// Smooth animations for cards on scroll
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -70,9 +82,8 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe cards for animations
 document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.card-retro');
+    const cards = document.querySelectorAll('.card-space');
     cards.forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
