@@ -1,22 +1,22 @@
-/* Additional Custom Styles */
+/* Raypunk Space Exploration Theme */
 
 /* Smooth transitions */
 * {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Space themed */
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(20, 20, 40, 0.5);
+    background: rgba(10, 14, 39, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #FFB366 0%, #FF9F4A 100%);
-    border-radius: 6px;
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -27,7 +27,7 @@
 /* Selection styling */
 ::selection {
     background: #FFB366;
-    color: #0a0a1a;
+    color: #0a0e27;
 }
 
 /* Focus states for accessibility */
@@ -35,6 +35,14 @@ button:focus-visible,
 a:focus-visible {
     outline: 2px solid #FFB366;
     outline-offset: 2px;
+}
+
+/* Raypunk grid background effect */
+.grid-pattern {
+    background-image: 
+        linear-gradient(rgba(255, 179, 102, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 179, 102, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
 }
 
 /* Animations */
@@ -60,7 +68,7 @@ a:focus-visible {
     }
 }
 
-.float {
+.float-animation {
     animation: float 3s ease-in-out infinite;
 }
 
@@ -75,23 +83,30 @@ a:focus-visible {
     }
 }
 
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .retro-text {
-        font-size: 1.5rem;
-    }
-    
-    .arcade-button {
-        font-size: 12px;
-        padding: 10px 20px;
-    }
-    
-    h1 {
-        font-size: 2rem;
-    }
-    
-    h2 {
+    .title-font {
         font-size: 1.75rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .btn-primary, .btn-secondary {
+        font-size: 12px;
+        padding: 10px 18px;
     }
 }
 
@@ -114,19 +129,59 @@ a:focus-visible {
     }
 }
 
-/* Hover effects for interactive elements */
-.card-retro:has(+ :hover) {
-    opacity: 0.8;
-}
-
 /* Neon-style links */
-a:not(.arcade-button) {
+a:not(.nav-link):not(.btn-primary):not(.btn-secondary) {
     color: #FFB366;
     text-decoration: underline;
     text-decoration-color: rgba(255, 179, 102, 0.5);
 }
 
-a:not(.arcade-button):hover {
+a:not(.nav-link):not(.btn-primary):not(.btn-secondary):hover {
     text-decoration-color: #FFB366;
     text-shadow: 0 0 10px rgba(255, 179, 102, 0.5);
+}
+
+/* Additional raypunk styling */
+.raypunk-grid {
+    background-image: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 35px,
+            rgba(255, 179, 102, 0.03) 35px,
+            rgba(255, 179, 102, 0.03) 70px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 35px,
+            rgba(255, 179, 102, 0.03) 35px,
+            rgba(255, 179, 102, 0.03) 70px
+        );
+}
+
+/* Gaming hint - subtle */
+.gaming-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border: 1px solid rgba(255, 179, 102, 0.3);
+    border-radius: 3px;
+    color: rgba(255, 179, 102, 0.6);
+    margin-left: 0.5rem;
+}
+
+/* Hover lift effect on cards */
+.card-space {
+    transition: all 0.3s ease;
+}
+
+/* Icon styling */
+svg {
+    transition: all 0.3s ease;
+}
+
+/* Section spacing */
+.scroll-section {
+    scroll-margin-top: 100px;
 }
