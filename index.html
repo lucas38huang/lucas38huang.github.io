@@ -7,15 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Audiowide&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital@0;1&display=swap');
         
         body {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Crimson Text', serif;
             scroll-behavior: smooth;
         }
         
         .title-font {
-            font-family: 'Audiowide', cursive;
+            font-family: 'Cinzel', serif;
         }
         
         .scanlines {
@@ -27,27 +27,27 @@
             pointer-events: none;
             background-image: repeating-linear-gradient(
                 0deg,
-                rgba(0, 0, 0, 0.02),
-                rgba(0, 0, 0, 0.02) 1px,
+                rgba(139, 101, 43, 0.01),
+                rgba(139, 101, 43, 0.01) 1px,
                 transparent 1px,
                 transparent 2px
             );
             z-index: 10;
         }
         
-        .space-bg {
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 50%, #0f0f25 100%);
+        .fantasy-bg {
+            background: linear-gradient(135deg, #1a1410 0%, #2d1f15 50%, #1a1410 100%);
             background-attachment: fixed;
         }
         
         .glow-text {
             color: #FFB366;
-            text-shadow: 0 0 10px rgba(255, 179, 102, 0.6), 0 0 20px rgba(255, 179, 102, 0.2);
+            text-shadow: 0 0 10px rgba(255, 179, 102, 0.5), 0 0 20px rgba(210, 170, 120, 0.2);
         }
         
         .glow-text-bright {
             color: #FFB366;
-            text-shadow: 0 0 15px rgba(255, 179, 102, 0.8), 0 0 30px rgba(255, 179, 102, 0.4);
+            text-shadow: 0 0 15px rgba(255, 179, 102, 0.7), 0 0 30px rgba(210, 170, 120, 0.4);
         }
         
         .neon-border {
@@ -56,10 +56,11 @@
         }
         
         .card-space {
-            background: rgba(20, 25, 50, 0.7);
+            background: linear-gradient(135deg, rgba(70, 50, 35, 0.9) 0%, rgba(50, 35, 20, 0.9) 100%);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 179, 102, 0.3);
-            box-shadow: 0 0 20px rgba(255, 179, 102, 0.1);
+            border: 2px solid rgba(255, 179, 102, 0.4);
+            border-top: 2px solid rgba(210, 170, 120, 0.6);
+            box-shadow: 0 0 20px rgba(255, 179, 102, 0.15), inset 0 0 20px rgba(255, 179, 102, 0.05);
         }
         
         .hover-lift {
@@ -68,7 +69,8 @@
         
         .hover-lift:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(255, 179, 102, 0.4), inset 0 0 10px rgba(255, 179, 102, 0.2);
+            box-shadow: 0 0 25px rgba(255, 179, 102, 0.5), inset 0 0 15px rgba(255, 179, 102, 0.15);
+            border-color: rgba(255, 179, 102, 0.6);
         }
         
         .nav-link {
@@ -77,20 +79,24 @@
             cursor: pointer;
             font-size: 13px;
             padding: 6px 14px;
-            border: 1px solid rgba(255, 179, 102, 0.4);
-            background: rgba(255, 179, 102, 0.05);
+            border: 1px solid rgba(255, 179, 102, 0.5);
+            background: rgba(255, 179, 102, 0.08);
             color: #FFB366;
             transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
         }
         
         .nav-link:hover {
-            background: rgba(255, 179, 102, 0.15);
-            box-shadow: 0 0 10px rgba(255, 179, 102, 0.3);
+            background: rgba(255, 179, 102, 0.2);
+            box-shadow: 0 0 10px rgba(255, 179, 102, 0.4);
+            border-color: rgba(255, 179, 102, 0.7);
         }
         
         .nav-link.active {
-            background: rgba(255, 179, 102, 0.25);
-            box-shadow: inset 0 0 10px rgba(255, 179, 102, 0.2), 0 0 15px rgba(255, 179, 102, 0.4);
+            background: rgba(255, 179, 102, 0.3);
+            box-shadow: inset 0 0 10px rgba(255, 179, 102, 0.25), 0 0 15px rgba(255, 179, 102, 0.5);
+            border-color: rgba(255, 179, 102, 0.8);
         }
         
         .section-title {
@@ -98,29 +104,32 @@
             font-weight: 900;
             margin-bottom: 3rem;
             padding-bottom: 1rem;
-            border-bottom: 2px solid rgba(255, 179, 102, 0.4);
+            border-bottom: 2px solid rgba(255, 179, 102, 0.5);
+            font-family: 'Cinzel', serif;
+            color: #FFB366;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #FFB366 0%, #FF9F4A 100%);
-            border: 1px solid #FF8C42;
+            background: linear-gradient(135deg, #FFB366 0%, #D2AA78 100%);
+            border: 2px solid #D2AA78;
             padding: 12px 24px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             font-size: 13px;
             font-weight: bold;
-            color: #0a0e27;
+            color: #1a1410;
             border-radius: 4px;
+            font-family: 'Cinzel', serif;
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(255, 179, 102, 0.5);
+            box-shadow: 0 0 20px rgba(255, 179, 102, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
         }
         
         .btn-secondary {
-            background: rgba(255, 179, 102, 0.1);
+            background: rgba(255, 179, 102, 0.15);
             border: 2px solid #FFB366;
             padding: 12px 24px;
             cursor: pointer;
@@ -130,11 +139,12 @@
             font-weight: bold;
             color: #FFB366;
             border-radius: 4px;
+            font-family: 'Cinzel', serif;
         }
         
         .btn-secondary:hover {
-            background: rgba(255, 179, 102, 0.2);
-            box-shadow: 0 0 15px rgba(255, 179, 102, 0.6);
+            background: rgba(255, 179, 102, 0.25);
+            box-shadow: 0 0 15px rgba(255, 179, 102, 0.7), inset 0 0 10px rgba(255, 179, 102, 0.2);
         }
         
         .star-icon {
@@ -168,11 +178,11 @@
         }
     </style>
 </head>
-<body class="space-bg text-gray-100 overflow-x-hidden">
+<body class="fantasy-bg text-amber-50 overflow-x-hidden">
     <div class="scanlines"></div>
     
     <!-- Header -->
-    <header class="fixed top-0 w-full z-50 border-b border-orange-300/30 bg-gradient-to-r from-blue-950/90 to-purple-950/90 backdrop-blur-md">
+    <header class="fixed top-0 w-full z-50 border-b-2 border-orange-300/40 bg-gradient-to-r from-amber-950/95 to-yellow-950/95 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4">
             <div class="flex items-center justify-between mb-3">
                 <h1 class="title-font glow-text text-2xl md:text-3xl font-bold">LUCAS HUANG</h1>
@@ -205,7 +215,7 @@
                             <h3 class="text-2xl md:text-3xl font-bold glow-text mb-4">LUCAS HUANG</h3>
                             <p class="text-lg md:text-xl text-orange-200 mb-4 font-semibold">Creative Writer & Narrative Designer</p>
                             
-                            <div class="space-y-4 text-sm md:text-base leading-relaxed text-gray-300">
+                            <div class="space-y-4 text-sm md:text-base leading-relaxed text-amber-100/80">
                                 <p class="border-l-4 border-orange-400 pl-4">
                                     Passionate narrative designer with extensive experience leading game production and crafting immersive interactive stories.
                                 </p>
@@ -223,8 +233,8 @@
                             <div class="space-y-3">
                                 <div>
                                     <p class="font-semibold text-orange-200">University of California, Santa Cruz</p>
-                                    <p class="text-sm text-gray-400">B.A. Art & Design: Games + Playable Media</p>
-                                    <p class="text-sm text-gray-400">Minor in Education</p>
+                        <p class="text-sm text-amber-100/70">B.A. Art & Design: Games + Playable Media</p>
+                                    <p class="text-sm text-amber-100/70">Minor in Education</p>
                                 </div>
                             </div>
                         </div>
@@ -236,8 +246,8 @@
                                 <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
                             </svg>
                         </div>
-                        <p class="text-center text-orange-300 font-bold text-lg md:text-xl">NARRATIVE PIONEER</p>
-                        <p class="text-center text-gray-400 text-sm mt-2">Crafting stories across worlds</p>
+                        <p class="text-center text-orange-300 font-bold text-lg md:text-xl">PALADIN OF NARRATIVES</p>
+                        <p class="text-center text-amber-200/70 text-sm mt-2">Wielding stories as a sword</p>
                     </div>
                 </div>
             </div>
@@ -422,11 +432,12 @@
     </main>
     
     <!-- Footer -->
-    <footer class="border-t border-orange-300/30 bg-gradient-to-r from-blue-950/80 to-purple-950/80 backdrop-blur-md py-6 md:py-8">
+    <footer class="border-t-2 border-orange-300/40 bg-gradient-to-r from-amber-950/90 to-yellow-950/90 backdrop-blur-md py-6 md:py-8">
         <div class="max-w-7xl mx-auto px-4 md:px-6 text-center">
-            <p class="text-gray-400 mb-2">© 2026 Lucas Huang | Narrative Designer & Creative Writer</p>
-            <p class="title-font text-xs md:text-sm glow-text">CONTINUING THE NARRATIVE</p>
+            <p class="text-amber-100/80 mb-2">© 2026 Lucas Huang | Narrative Designer & Creative Writer</p>
+            <p class="title-font text-xs md:text-sm glow-text">The Adventure Continues</p>
         </div>
+    </footer>
     
     <script src="script.js"></script>
 </body>
