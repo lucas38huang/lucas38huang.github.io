@@ -1,33 +1,33 @@
-/* Raypunk Space Exploration Theme */
+/* Fantasy TTRPG Theme - Paladin/Cleric Adventure */
 
 /* Smooth transitions */
 * {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom scrollbar - Space themed */
+/* Custom scrollbar - Medieval themed */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(10, 14, 39, 0.8);
+    background: rgba(26, 20, 16, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #FFB366 0%, #FF9F4A 100%);
+    background: linear-gradient(180deg, #FFB366 0%, #D2AA78 100%);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #FF9F4A 0%, #FF8C42 100%);
+    background: linear-gradient(180deg, #D2AA78 0%, #FFB366 100%);
     box-shadow: 0 0 10px rgba(255, 179, 102, 0.5);
 }
 
 /* Selection styling */
 ::selection {
     background: #FFB366;
-    color: #0a0e27;
+    color: #1a1410;
 }
 
 /* Focus states for accessibility */
@@ -37,21 +37,25 @@ a:focus-visible {
     outline-offset: 2px;
 }
 
-/* Raypunk grid background effect */
-.grid-pattern {
+/* Medieval parchment background effect */
+.parchment-pattern {
     background-image: 
-        linear-gradient(rgba(255, 179, 102, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 179, 102, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(255, 179, 102, 0.02) 35px,
+            rgba(255, 179, 102, 0.02) 70px
+        );
 }
 
 /* Animations */
 @keyframes glow-pulse {
     0%, 100% {
-        text-shadow: 0 0 10px rgba(255, 179, 102, 0.8);
+        text-shadow: 0 0 10px rgba(255, 179, 102, 0.7);
     }
     50% {
-        text-shadow: 0 0 20px rgba(255, 179, 102, 1), 0 0 30px rgba(255, 179, 102, 0.6);
+        text-shadow: 0 0 20px rgba(255, 179, 102, 0.9), 0 0 30px rgba(210, 170, 120, 0.5);
     }
 }
 
@@ -129,7 +133,7 @@ a:focus-visible {
     }
 }
 
-/* Neon-style links */
+/* Medieval-style links */
 a:not(.nav-link):not(.btn-primary):not(.btn-secondary) {
     color: #FFB366;
     text-decoration: underline;
@@ -139,36 +143,6 @@ a:not(.nav-link):not(.btn-primary):not(.btn-secondary) {
 a:not(.nav-link):not(.btn-primary):not(.btn-secondary):hover {
     text-decoration-color: #FFB366;
     text-shadow: 0 0 10px rgba(255, 179, 102, 0.5);
-}
-
-/* Additional raypunk styling */
-.raypunk-grid {
-    background-image: 
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 35px,
-            rgba(255, 179, 102, 0.03) 35px,
-            rgba(255, 179, 102, 0.03) 70px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 35px,
-            rgba(255, 179, 102, 0.03) 35px,
-            rgba(255, 179, 102, 0.03) 70px
-        );
-}
-
-/* Gaming hint - subtle */
-.gaming-badge {
-    display: inline-block;
-    font-size: 0.75rem;
-    padding: 2px 6px;
-    border: 1px solid rgba(255, 179, 102, 0.3);
-    border-radius: 3px;
-    color: rgba(255, 179, 102, 0.6);
-    margin-left: 0.5rem;
 }
 
 /* Hover lift effect on cards */
