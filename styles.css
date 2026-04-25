@@ -1,39 +1,39 @@
-/* Fantasy TTRPG Theme - Paladin/Cleric Adventure */
+/* Tavern Briefing - TTRPG & Celestial Theme with Wooden Tavern Lighting */
 
 /* Smooth transitions */
 * {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom scrollbar - Medieval themed */
+/* Custom scrollbar - Parchment themed */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(26, 20, 16, 0.8);
+    background: rgba(80, 60, 40, 0.7);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #FFB366 0%, #D2AA78 100%);
+    background: linear-gradient(180deg, #D4A574 0%, #8B7355 100%);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #D2AA78 0%, #FFB366 100%);
-    box-shadow: 0 0 10px rgba(255, 179, 102, 0.5);
+    background: linear-gradient(180deg, #8B7355 0%, #D4A574 100%);
+    box-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
 }
 
 /* Selection styling */
 ::selection {
-    background: #FFB366;
-    color: #1a1410;
+    background: #FFD4A3;
+    color: #3d2817;
 }
 
 /* Focus states for accessibility */
 button:focus-visible,
 a:focus-visible {
-    outline: 2px solid #FFB366;
+    outline: 2px solid #A8D8EA;
     outline-offset: 2px;
 }
 
@@ -44,23 +44,52 @@ a:focus-visible {
             45deg,
             transparent,
             transparent 35px,
-            rgba(255, 179, 102, 0.02) 35px,
-            rgba(255, 179, 102, 0.02) 70px
-        );
+            rgba(139, 90, 43, 0.02) 35px,
+            rgba(139, 90, 43, 0.02) 70px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(120, 80, 50, 0.04),
+            rgba(120, 80, 50, 0.04) 2px,
+            transparent 2px,
+            transparent 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(90, 60, 35, 0.03),
+            rgba(90, 60, 35, 0.03) 3px,
+            transparent 3px,
+            transparent 6px
+        ),
+        radial-gradient(circle at 20% 80%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(168, 216, 234, 0.08) 0%, transparent 50%);
 }
 
 /* Animations */
 @keyframes glow-pulse {
     0%, 100% {
-        text-shadow: 0 0 10px rgba(255, 179, 102, 0.7);
+        text-shadow: 0 0 10px rgba(212, 165, 116, 0.6);
     }
     50% {
-        text-shadow: 0 0 20px rgba(255, 179, 102, 0.9), 0 0 30px rgba(210, 170, 120, 0.5);
+        text-shadow: 0 0 20px rgba(212, 165, 116, 0.8), 0 0 30px rgba(255, 200, 124, 0.5);
     }
 }
 
 .glow-pulse {
     animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes celestial-glow {
+    0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(212, 165, 116, 0.5));
+    }
+    50% {
+        filter: drop-shadow(0 0 16px rgba(212, 165, 116, 0.8));
+    }
+}
+
+.celestial-glow {
+    animation: celestial-glow 3s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -135,14 +164,14 @@ a:focus-visible {
 
 /* Medieval-style links */
 a:not(.nav-link):not(.btn-primary):not(.btn-secondary) {
-    color: #FFB366;
+    color: #D4A574;
     text-decoration: underline;
-    text-decoration-color: rgba(255, 179, 102, 0.5);
+    text-decoration-color: rgba(212, 165, 116, 0.5);
 }
 
 a:not(.nav-link):not(.btn-primary):not(.btn-secondary):hover {
-    text-decoration-color: #FFB366;
-    text-shadow: 0 0 10px rgba(255, 179, 102, 0.5);
+    text-decoration-color: #D4A574;
+    text-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
 }
 
 /* Hover lift effect on cards */
@@ -155,7 +184,49 @@ svg {
     transition: all 0.3s ease;
 }
 
+/* Celestial decorative elements */
+.celestial-accent {
+    position: relative;
+}
+
+.celestial-accent::before {
+    content: '✦';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    opacity: 0.3;
+    font-size: 20px;
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+.celestial-accent::after {
+    content: '✧';
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    opacity: 0.25;
+    font-size: 16px;
+    animation: twinkle 5s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+}
+
 /* Section spacing */
 .scroll-section {
     scroll-margin-top: 100px;
+    position: relative;
+}
+
+.scroll-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 150px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.15), transparent);
+    transform: translateX(-50%);
 }
