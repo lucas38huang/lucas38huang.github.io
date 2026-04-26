@@ -1,4 +1,4 @@
-/* Tavern Briefing - TTRPG & Celestial Theme with Wooden Tavern Lighting */
+/* D&D Character Sheet Theme - Parchment & Quill Aesthetic */
 
 /* Smooth transitions */
 * {
@@ -7,119 +7,42 @@
 
 /* Custom scrollbar - Parchment themed */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(80, 60, 40, 0.7);
+    background: linear-gradient(to bottom, #E8DAC9, #D4C4B0);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #D4A574 0%, #8B7355 100%);
-    border-radius: 5px;
+    background: linear-gradient(180deg, #A0522D 0%, #8B7355 100%);
+    border-radius: 6px;
+    border: 2px solid #D4C4B0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #8B7355 0%, #D4A574 100%);
-    box-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
+    background: linear-gradient(180deg, #8B7355 0%, #A0522D 100%);
+    box-shadow: 0 0 10px rgba(160, 82, 45, 0.5);
 }
 
 /* Selection styling */
 ::selection {
-    background: #FFD4A3;
-    color: #3d2817;
+    background: #A0522D;
+    color: #F5EFE0;
 }
 
 /* Focus states for accessibility */
 button:focus-visible,
 a:focus-visible {
-    outline: 2px solid #A8D8EA;
+    outline: 2px solid #A0522D;
     outline-offset: 2px;
 }
 
-/* Medieval parchment background effect */
-.parchment-pattern {
-    background-image: 
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 35px,
-            rgba(139, 90, 43, 0.02) 35px,
-            rgba(139, 90, 43, 0.02) 70px
-        ),
-        repeating-linear-gradient(
-            0deg,
-            rgba(120, 80, 50, 0.04),
-            rgba(120, 80, 50, 0.04) 2px,
-            transparent 2px,
-            transparent 4px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            rgba(90, 60, 35, 0.03),
-            rgba(90, 60, 35, 0.03) 3px,
-            transparent 3px,
-            transparent 6px
-        ),
-        radial-gradient(circle at 20% 80%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(168, 216, 234, 0.08) 0%, transparent 50%);
-}
-
-/* Animations */
-@keyframes glow-pulse {
-    0%, 100% {
-        text-shadow: 0 0 10px rgba(212, 165, 116, 0.6);
-    }
-    50% {
-        text-shadow: 0 0 20px rgba(212, 165, 116, 0.8), 0 0 30px rgba(255, 200, 124, 0.5);
-    }
-}
-
-.glow-pulse {
-    animation: glow-pulse 2s ease-in-out infinite;
-}
-
-@keyframes celestial-glow {
-    0%, 100% {
-        filter: drop-shadow(0 0 8px rgba(212, 165, 116, 0.5));
-    }
-    50% {
-        filter: drop-shadow(0 0 16px rgba(212, 165, 116, 0.8));
-    }
-}
-
-.celestial-glow {
-    animation: celestial-glow 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-.float-animation {
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes slide-in {
+/* Smooth page transitions */
+@keyframes pageTransition {
     from {
         opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fade-in-up {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
@@ -127,106 +50,97 @@ a:focus-visible {
     }
 }
 
+.page.active {
+    animation: pageTransition 0.4s ease-in-out;
+}
+
+/* Hover effects for cards */
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: inset 0 0 15px rgba(160, 82, 45, 0.2);
+    transform: translateX(5px);
+}
+
+/* Button hover effects */
+.button {
+    transition: all 0.3s ease;
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+/* Stat box animations */
+.stat-box {
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    background: linear-gradient(135deg, #FFE8D6 0%, #F5EFE0 100%);
+    box-shadow: inset 0 0 15px rgba(160, 82, 45, 0.15);
+    transform: translateY(-3px);
+}
+
+/* Card animations on hover */
+.card:hover {
+    border-left-color: #654321;
+    box-shadow: inset 0 0 15px rgba(160, 82, 45, 0.2), 
+                0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation tab animations */
+.nav-tab {
+    transition: all 0.3s ease;
+}
+
+.nav-tab:active {
+    transform: scale(0.95);
+}
+
+/* Print styles for character sheet */
+@media print {
+    header, footer {
+        display: none;
+    }
+    
+    .sheet-container {
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+    
+    .page {
+        display: block !important;
+        page-break-after: always;
+    }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .title-font {
-        font-size: 1.75rem;
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
     }
     
-    .section-title {
-        font-size: 1.75rem;
+    .sheet-container {
+        padding: 20px;
     }
     
-    .btn-primary, .btn-secondary {
-        font-size: 12px;
-        padding: 10px 18px;
+    .sheet-title {
+        font-size: 2rem;
+    }
+    
+    .button-row {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 }
 
-/* Dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-    body {
-        color-scheme: dark;
-    }
-}
-
-/* Accessibility - Reduced motion */
+/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
     }
-}
-
-/* Medieval-style links */
-a:not(.nav-link):not(.btn-primary):not(.btn-secondary) {
-    color: #D4A574;
-    text-decoration: underline;
-    text-decoration-color: rgba(212, 165, 116, 0.5);
-}
-
-a:not(.nav-link):not(.btn-primary):not(.btn-secondary):hover {
-    text-decoration-color: #D4A574;
-    text-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
-}
-
-/* Hover lift effect on cards */
-.card-space {
-    transition: all 0.3s ease;
-}
-
-/* Icon styling */
-svg {
-    transition: all 0.3s ease;
-}
-
-/* Celestial decorative elements */
-.celestial-accent {
-    position: relative;
-}
-
-.celestial-accent::before {
-    content: '✦';
-    position: absolute;
-    top: -10px;
-    left: 20px;
-    opacity: 0.3;
-    font-size: 20px;
-    animation: twinkle 4s ease-in-out infinite;
-}
-
-.celestial-accent::after {
-    content: '✧';
-    position: absolute;
-    bottom: -10px;
-    right: 20px;
-    opacity: 0.25;
-    font-size: 16px;
-    animation: twinkle 5s ease-in-out infinite;
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.7; }
-}
-
-/* Section spacing */
-.scroll-section {
-    scroll-margin-top: 100px;
-    position: relative;
-}
-
-.scroll-section::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 150px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.15), transparent);
-    transform: translateX(-50%);
 }
