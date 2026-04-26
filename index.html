@@ -3,102 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucas Huang | Narrative Designer & Creative Writer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Lucas Huang - D&D Character Sheet</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital@0;1&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Crimson+Text:ital@0;1&family=Cinzel:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body {
             font-family: 'Crimson Text', serif;
-            scroll-behavior: smooth;
-        }
-        
-        .title-font {
-            font-family: 'Cinzel', serif;
-        }
-        
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background-image: repeating-linear-gradient(
-                0deg,
-                rgba(100, 70, 40, 0.01),
-                rgba(100, 70, 40, 0.01) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            z-index: 10;
-        }
-        
-        .fantasy-bg {
-            background: linear-gradient(135deg, #3D2817 0%, #5C4630 50%, #3D2817 100%);
-            background-attachment: fixed;
-            position: relative;
-        }
-        
-        .fantasy-bg::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            background-color: #D4C4B0;
             background-image: 
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 4px,
-                    rgba(70, 50, 35, 0.08) 4px,
-                    rgba(70, 50, 35, 0.08) 8px
-                ),
-                repeating-linear-gradient(
-                    0deg,
-                    rgba(60, 45, 30, 0.06),
-                    rgba(60, 45, 30, 0.06) 3px,
-                    transparent 3px,
-                    transparent 6px
-                ),
-                radial-gradient(circle at 25% 25%, rgba(212, 165, 116, 0.15) 0%, transparent 30%),
-                radial-gradient(circle at 75% 75%, rgba(212, 165, 116, 0.1) 0%, transparent 25%),
-                radial-gradient(circle at 15% 85%, rgba(168, 216, 234, 0.05) 0%, transparent 35%);
-            pointer-events: none;
-            z-index: -1;
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23D4C4B0" width="100" height="100"/><path fill="%23E8DAC9" opacity="0.3" d="M0 0h100v100H0z"/><path fill="%238B7355" opacity="0.02" d="M10 10h20v20H10zm30 30h20v20H40z"/></svg>');
+            color: #3D2817;
+            overflow-x: hidden;
         }
         
-        .glow-text {
-            color: #D4A574;
-            text-shadow: 0 0 10px rgba(212, 165, 116, 0.4), 0 0 20px rgba(168, 216, 234, 0.15);
-        }
-        
-        .glow-text-bright {
-            color: #E8C49C;
-            text-shadow: 0 0 15px rgba(212, 165, 116, 0.5), 0 0 30px rgba(168, 216, 234, 0.2);
-        }
-        
-        .neon-border {
-            border-color: #D4A574;
-            box-shadow: inset 0 0 10px rgba(212, 165, 116, 0.15), 0 0 15px rgba(212, 165, 116, 0.2);
-        }
-        
-        .card-space {
-            background: linear-gradient(135deg, rgba(215, 195, 165, 0.4) 0%, rgba(190, 160, 130, 0.3) 100%);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(212, 165, 116, 0.5);
-            border-top: 2px solid rgba(212, 165, 116, 0.7);
+        /* Parchment effect */
+        .parchment {
+            background: linear-gradient(135deg, #F5EFE0 0%, #E8DAC9 50%, #F5EFE0 100%);
             box-shadow: 
-                0 0 30px rgba(212, 165, 116, 0.2), 
-                inset 0 0 20px rgba(212, 165, 116, 0.08),
-                inset -2px -2px 10px rgba(0, 0, 0, 0.1);
+                inset 0 0 60px rgba(139, 115, 85, 0.2),
+                inset -2px -2px 5px rgba(0, 0, 0, 0.1),
+                inset 2px 2px 5px rgba(255, 255, 255, 0.3);
+            border: 3px solid #C9B8A3;
             position: relative;
             overflow: hidden;
         }
         
-        .card-space::before {
+        .parchment::before {
             content: '';
             position: absolute;
             top: 0;
@@ -106,412 +43,528 @@
             right: 0;
             bottom: 0;
             background-image: 
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(139, 90, 43, 0.03) 2px,
-                    rgba(139, 90, 43, 0.03) 4px
-                ),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(139, 90, 43, 0.02) 2px,
-                    rgba(139, 90, 43, 0.02) 4px
-                );
+                radial-gradient(ellipse at 20% 30%, rgba(160, 82, 45, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(160, 82, 45, 0.02) 0%, transparent 50%);
             pointer-events: none;
         }
         
-        .hover-lift {
-            transition: all 0.3s ease;
+        /* Ink stains */
+        .ink-stain {
+            position: absolute;
+            background: radial-gradient(ellipse, rgba(61, 40, 23, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(8px);
         }
         
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(212, 165, 116, 0.5), inset 0 0 15px rgba(212, 165, 116, 0.15);
-            border-color: rgba(212, 165, 116, 0.7);
+        .stain-1 { width: 120px; height: 100px; top: -20px; right: -30px; }
+        .stain-2 { width: 80px; height: 120px; bottom: 10%; left: 5%; }
+        .stain-3 { width: 60px; height: 80px; bottom: 5%; right: 3%; }
+        
+        header {
+            background: linear-gradient(135deg, #A0522D 0%, #8B7355 50%, #A0522D 100%);
+            border-bottom: 4px solid #654321;
+            color: #F5EFE0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            padding: 12px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
-        .nav-link {
+        header h1 {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 2rem;
+            text-align: center;
+            color: #FFE8D6;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+            padding: 0 16px;
+        }
+        
+        .nav-tab {
+            padding: 6px 14px;
+            background: rgba(255, 232, 214, 0.1);
+            border: 2px solid rgba(255, 232, 214, 0.4);
+            color: #FFE8D6;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .nav-tab:hover {
+            background: rgba(255, 232, 214, 0.2);
+            border-color: rgba(255, 232, 214, 0.8);
+            box-shadow: 0 0 10px rgba(255, 232, 214, 0.3);
+        }
+        
+        .nav-tab.active {
+            background: rgba(255, 232, 214, 0.4);
+            border-color: #FFE8D6;
+            box-shadow: inset 0 0 10px rgba(255, 232, 214, 0.2), 0 0 15px rgba(255, 232, 214, 0.4);
+        }
+        
+        main {
+            margin-top: 120px;
+            padding: 0;
+        }
+        
+        .page {
+            min-height: 100vh;
+            display: none;
+            padding: 40px 20px;
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .sheet-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #F5EFE0 0%, #E8DAC9 50%, #F5EFE0 100%);
+            box-shadow: 
+                inset 0 0 60px rgba(139, 115, 85, 0.2),
+                0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 3px solid #C9B8A3;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
-            font-size: 13px;
-            padding: 6px 14px;
-            border: 1px solid rgba(212, 165, 116, 0.6);
-            background: rgba(212, 165, 116, 0.12);
-            color: #D4A574;
-            transition: all 0.3s ease;
+        }
+        
+        .sheet-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(61, 40, 23, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(30px);
+            pointer-events: none;
+        }
+        
+        .sheet-title {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 2.8rem;
+            text-align: center;
+            color: #654321;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+        
+        .sheet-subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #8B7355;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #A0522D;
+            padding-bottom: 15px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #FFF9F0 0%, #F5EFE0 100%);
+            border: 2px solid #A0522D;
+            padding: 15px;
+            text-align: center;
+            box-shadow: inset 0 0 10px rgba(160, 82, 45, 0.1);
+            position: relative;
+        }
+        
+        .stat-label {
             font-family: 'Cinzel', serif;
-            font-weight: 600;
-        }
-        
-        .nav-link:hover {
-            background: rgba(212, 165, 116, 0.25);
-            box-shadow: 0 0 10px rgba(212, 165, 116, 0.4);
-            border-color: rgba(212, 165, 116, 0.8);
-        }
-        
-        .nav-link.active {
-            background: rgba(212, 165, 116, 0.35);
-            box-shadow: inset 0 0 10px rgba(212, 165, 116, 0.25), 0 0 15px rgba(212, 165, 116, 0.5);
-            border-color: rgba(212, 165, 116, 0.9);
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 3rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid rgba(212, 165, 116, 0.5);
-            font-family: 'Cinzel', serif;
-            color: #D4A574;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #D4A574 0%, #A8886B 100%);
-            border: 2px solid #8B7355;
-            padding: 12px 24px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            color: #654321;
             text-transform: uppercase;
-            font-size: 13px;
-            font-weight: bold;
-            color: #2D1F14;
-            border-radius: 4px;
-            font-family: 'Cinzel', serif;
-            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 700;
         }
         
-        .btn-primary:hover {
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #A0522D;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .content-section {
+            margin: 30px 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #A0522D 0%, #8B7355 100%);
+            color: #F5EFE0;
+            padding: 10px 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 4px solid #654321;
+            margin-bottom: 15px;
+        }
+        
+        .card {
+            background: #FFF9F0;
+            border-left: 3px solid #A0522D;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: inset 0 0 5px rgba(160, 82, 45, 0.1);
+        }
+        
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: #654321;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+        
+        .card-text {
+            color: #5C4630;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .card-meta {
+            font-size: 0.85rem;
+            color: #A0522D;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #A0522D 0%, #8B7355 100%);
+            color: #F5EFE0;
+            border: 2px solid #654321;
+            padding: 12px 24px;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .button:hover {
+            background: linear-gradient(135deg, #8B7355 0%, #A0522D 100%);
+            box-shadow: 0 0 15px rgba(160, 82, 45, 0.4);
             transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(212, 165, 116, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.15);
         }
         
-        .btn-secondary {
-            background: rgba(212, 165, 116, 0.15);
-            border: 2px solid #D4A574;
-            padding: 12px 24px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-size: 13px;
-            font-weight: bold;
-            color: #D4A574;
-            border-radius: 4px;
-            font-family: 'Cinzel', serif;
+        .button-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
         }
         
-        .btn-secondary:hover {
-            background: rgba(212, 165, 116, 0.3);
-            box-shadow: 0 0 15px rgba(212, 165, 116, 0.6), inset 0 0 10px rgba(212, 165, 116, 0.2);
+        .signature-line {
+            margin-top: 40px;
+            border-top: 1px solid #A0522D;
+            padding-top: 10px;
+            text-align: right;
+            font-style: italic;
+            color: #8B7355;
+            font-size: 0.9rem;
         }
         
-        .star-icon {
-            display: inline-block;
-            margin-right: 0.5rem;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .float {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
-        }
-        
-        .twinkle {
-            animation: twinkle 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 15px rgba(212, 165, 116, 0.3); }
-            50% { box-shadow: 0 0 25px rgba(212, 165, 116, 0.6); }
-        }
-        
-        .pulse {
-            animation: pulse-glow 2s ease-in-out infinite;
-        }
-        
-        .grid-pattern {
-            background-image: 
-                linear-gradient(rgba(212, 165, 116, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(212, 165, 116, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
+        footer {
+            background: linear-gradient(135deg, #A0522D 0%, #8B7355 100%);
+            color: #F5EFE0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
-<body class="fantasy-bg text-amber-900 overflow-x-hidden" style="background-color: #3D2817;">
-    <div class="scanlines"></div>
-    
-    <!-- Header -->
-    <header class="fixed top-0 w-full z-50 border-b-2 border-amber-700/60 bg-gradient-to-r from-amber-900/80 to-orange-900/80 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4">
-            <div class="flex items-center justify-between mb-3">
-                <h1 class="title-font glow-text text-2xl md:text-3xl font-bold">LUCAS HUANG</h1>
-            </div>
-            
-            <!-- Navigation -->
-            <nav class="flex flex-wrap gap-2 md:gap-3">
-                <button class="nav-link active" data-target="profile">PROFILE</button>
-                <button class="nav-link" data-target="projects">PROJECTS</button>
-                <button class="nav-link" data-target="works">WORKS</button>
-                <button class="nav-link" data-target="awards">AWARDS</button>
-                <button class="nav-link pulse" data-target="materials">
-                    <span class="star-icon">⭐</span>MATERIALS
-                </button>
-            </nav>
+<body>
+    <header>
+        <h1>CHARACTER SHEET</h1>
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-page="profile">Profile</button>
+            <button class="nav-tab" data-page="experience">Experience</button>
+            <button class="nav-tab" data-page="projects">Projects</button>
+            <button class="nav-tab" data-page="portfolio">Portfolio</button>
+            <button class="nav-tab" data-page="achievements">Achievements</button>
         </div>
     </header>
-    
-    <!-- Main Content -->
-    <main class="pt-24 md:pt-28">
-        
-        <!-- Profile Section -->
-        <section id="profile" class="scroll-section min-h-screen flex items-center py-16 md:py-20 px-4 md:px-6">
-            <div class="max-w-7xl mx-auto w-full">
-                <h2 class="section-title glow-text-bright">PROFILE</h2>
+
+    <main>
+        <!-- PROFILE PAGE -->
+        <div class="page active" id="profile">
+            <div class="sheet-container">
+                <div class="ink-stain stain-1"></div>
+                <div class="ink-stain stain-2"></div>
+                <div class="ink-stain stain-3"></div>
                 
-                <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                    <div class="space-y-6">
-                        <div class="card-space p-6 md:p-8 hover-lift rounded-lg">
-                            <h3 class="text-2xl md:text-3xl font-bold glow-text mb-4">LUCAS HUANG</h3>
-                            <p class="text-lg md:text-xl text-amber-100 mb-4 font-semibold">Narrative Designer & Story Architect</p>
-                            
-                            <div class="space-y-4 text-sm md:text-base leading-relaxed text-amber-50/90">
-                                <p class="border-l-4 border-amber-600 pl-4">
-                                    Professional narrative designer and creative storyteller with extensive experience crafting compelling interactive narratives for game production.
-                                </p>
-                                <p class="border-l-4 border-amber-600 pl-4">
-                                    Specialized in world-building, character development, dialogue systems, and creating engaging gameplay narratives that resonate with players.
-                                </p>
-                                <p class="border-l-4 border-amber-600 pl-4">
-                                    I blend creative storytelling with technical design principles to produce immersive interactive experiences.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="card-space p-6 md:p-8 rounded-lg">
-                            <h4 class="text-lg font-bold glow-text mb-3">EDUCATION</h4>
-                            <div class="space-y-3">
-                                <div>
-                                    <p class="font-semibold text-amber-100">University of California, Santa Cruz</p>
-                        <p class="text-sm text-amber-50/80">B.A. Art & Design: Games + Playable Media</p>
-                                    <p class="text-sm text-amber-50/80">Minor in Education</p>
-                                </div>
-                            </div>
-                        </div>
+                <h2 class="sheet-title">LUCAS HUANG</h2>
+                <p class="sheet-subtitle">Lv. 99 Narrative Designer & Creative Writer</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-label">Storytelling</div>
+                        <div class="stat-value">19</div>
                     </div>
-                    
-                    <div class="card-space p-8 md:p-10 rounded-lg flex flex-col items-center justify-center hover-lift h-full">
-                        <div class="w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 border-2 border-amber-600 rounded-lg flex items-center justify-center bg-gradient-to-br from-amber-900/40 to-orange-900/30 float" style="position: relative;">
-                            <!-- D20 Dice Icon -->
-                            <div class="text-6xl md:text-7xl font-bold text-amber-300 celestial-glow" style="transform: rotate(-15deg); text-shadow: 0 0 20px rgba(212, 165, 116, 0.6);">
-                                ⟨d⟩
-                            </div>
-                        </div>
-                        <p class="text-center text-amber-100 font-bold text-lg md:text-xl">SEEKER OF STORIES</p>
-                        <p class="text-center text-amber-50/70 text-sm mt-2">✦ Roll for the Perfect Narrative ✦</p>
+                    <div class="stat-box">
+                        <div class="stat-label">World Building</div>
+                        <div class="stat-value">18</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Character Dev</div>
+                        <div class="stat-value">20</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Game Design</div>
+                        <div class="stat-value">17</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Leadership</div>
+                        <div class="stat-value">16</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Dialogue</div>
+                        <div class="stat-value">19</div>
                     </div>
                 </div>
+
+                <div class="content-section">
+                    <div class="section-header">◆ Biography ◆</div>
+                    <div class="card">
+                        <p class="card-text">
+                            A seasoned narrative architect with extensive experience leading game production and crafting immersive interactive stories. Specialized in world-building, character development, and creating engaging gameplay narratives that resonate with players. Blending creative storytelling with technical design to produce compelling interactive experiences.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">◆ Education & Credentials ◆</div>
+                    <div class="card">
+                        <div class="card-title">University of California, Santa Cruz</div>
+                        <p class="card-text">B.A. Art & Design: Games + Playable Media</p>
+                        <p class="card-text" style="margin-top: 5px;">Minor in Education</p>
+                    </div>
+                </div>
+
+                <div class="signature-line">~ Sworn to the craft of narrative ~</div>
             </div>
-        </section>
-        
-        <!-- Projects Section -->
-        <section id="projects" class="scroll-section min-h-screen flex items-center py-16 md:py-20 px-4 md:px-6 bg-gradient-to-b from-transparent to-orange-900/10">
-            <div class="max-w-7xl mx-auto w-full">
-                <h2 class="section-title glow-text-bright">PROJECTS</h2>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Project 1 -->
-                    <div class="card-space p-6 md:p-8 rounded-lg hover-lift group">
-                        <div class="mb-4 h-40 bg-gradient-to-br from-amber-800/50 to-orange-800/40 rounded-lg flex items-center justify-center border border-amber-600/50 group-hover:border-amber-500">
-                            <svg class="w-16 h-16 text-amber-300" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold glow-text mb-3">EPIC NARRATIVE QUEST</h3>
-                        <p class="text-sm text-amber-50/80 mb-4">A sweeping narrative experience with branching storylines and dynamic character arcs that adapt to player choices.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-2 py-1 border border-amber-600 rounded text-amber-100 bg-amber-900/40">Writing</span>
-                            <span class="text-xs px-2 py-1 border border-amber-600 rounded text-amber-100 bg-amber-900/40">Design</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 2 -->
-                    <div class="card-space p-6 md:p-8 rounded-lg hover-lift group">
-                        <div class="mb-4 h-40 bg-gradient-to-br from-amber-800/50 to-orange-800/40 rounded-lg flex items-center justify-center border border-amber-600/50 group-hover:border-amber-500">
-                            <svg class="w-16 h-16 text-amber-300" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold glow-text mb-3">CHARACTER DEVELOPMENT</h3>
-                        <p class="text-sm text-amber-50/80 mb-4">Crafted compelling character arcs, dialogue systems, and personality-driven interactions for immersive gameplay.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-2 py-1 border border-amber-600 rounded text-amber-100 bg-amber-900/40">Narrative</span>
-                            <span class="text-xs px-2 py-1 border border-amber-600 rounded text-amber-100 bg-amber-900/40">Production</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 3 -->
-                    <div class="card-space p-6 md:p-8 rounded-lg hover-lift group">
-                        <div class="mb-4 h-40 bg-gradient-to-br from-amber-800/50 to-orange-800/40 rounded-lg flex items-center justify-center border border-amber-600/50 group-hover:border-amber-500">
-                            <svg class="w-16 h-16 text-amber-300" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.3A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold glow-text mb-3">WORLD BUILDING</h3>
-                        <p class="text-sm text-amber-50/80 mb-4">Developed rich game worlds with deep lore, faction systems, politics, and environmental storytelling.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-2 py-1 border border-amber-600 rounded text-amber-100 bg-amber-900/40">Lore</span>
-                            <span class="text-xs px-2 py-1 border border-amber-600 rounded text-amber-100 bg-amber-900/40">Design</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Personal Works Section -->
-        <section id="works" class="scroll-section min-h-screen flex items-center py-16 md:py-20 px-4 md:px-6">
-            <div class="max-w-7xl mx-auto w-full">
-                <h2 class="section-title glow-text-bright">PERSONAL WORKS</h2>
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="card-space p-6 md:p-8 rounded-lg border-l-4 border-amber-600 hover-lift">
-                        <h3 class="text-2xl font-bold glow-text mb-3">INTERACTIVE FICTION SERIES</h3>
-                        <p class="text-amber-50/80 mb-4">A collection of choice-driven narratives exploring themes of identity, consequence, and agency in interactive storytelling.</p>
-                        <p class="text-sm text-amber-100">Status: <span class="font-bold">In Development</span></p>
-                    </div>
-                    
-                    <div class="card-space p-6 md:p-8 rounded-lg border-l-4 border-amber-600 hover-lift">
-                        <h3 class="text-2xl font-bold glow-text mb-3">GAME NARRATIVE PUBLICATION</h3>
-                        <p class="text-amber-50/80 mb-4">An active publication on narrative design techniques, world-building strategies, and craft insights for interactive media.</p>
-                        <p class="text-sm text-amber-100">Status: <span class="font-bold">Active</span></p>
-                    </div>
-                    
-                    <div class="card-space p-6 md:p-8 rounded-lg border-l-4 border-amber-600 hover-lift">
-                        <h3 class="text-2xl font-bold glow-text mb-3">DIALOGUE SYSTEM FRAMEWORK</h3>
-                        <p class="text-amber-50/80 mb-4">Open-source tools and documentation for managing complex dialogue trees, branching conversations, and dynamic narrative states in games.</p>
-                        <p class="text-sm text-amber-100">Status: <span class="font-bold">Beta</span></p>
-                    </div>
-                    
-                    <div class="card-space p-6 md:p-8 rounded-lg border-l-4 border-amber-600 hover-lift">
-                        <h3 class="text-2xl font-bold glow-text mb-3">NARRATIVE DESIGN PORTFOLIO</h3>
-                        <p class="text-amber-50/80 mb-4">Comprehensive showcase of narrative design work across multiple game genres, platforms, and storytelling approaches.</p>
-                        <p class="text-sm text-amber-100">Status: <span class="font-bold">Ongoing</span></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Awards Section -->
-        <section id="awards" class="scroll-section min-h-screen flex items-center py-16 md:py-20 px-4 md:px-6 bg-gradient-to-b from-transparent to-orange-900/15">
-            <div class="max-w-7xl mx-auto w-full">
-                <h2 class="section-title glow-text-bright">PROFESSIONAL ACHIEVEMENTS</h2>
-                
-                <div class="space-y-4 md:space-y-6">
-                    <div class="card-space p-6 md:p-8 rounded-lg flex items-start gap-4 md:gap-6 hover-lift">
-                        <div class="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center border border-amber-600">
-                            <svg class="w-6 h-6 md:w-8 md:h-8 text-amber-900" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                            </svg>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-lg md:text-xl font-bold glow-text mb-2">NARRATIVE EXCELLENCE</h3>
-                            <p class="text-amber-50/80">Recognized for creating compelling narratives that engage, inspire, and resonate with players across diverse platforms and genres.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="card-space p-6 md:p-8 rounded-lg flex items-start gap-4 md:gap-6 hover-lift">
-                        <div class="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center border border-amber-600">
-                            <svg class="w-6 h-6 md:w-8 md:h-8 text-amber-900 celestial-glow" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
-                            </svg>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-lg md:text-xl font-bold glow-text mb-2">LEADERSHIP & PRODUCTION</h3>
-                            <p class="text-amber-50/80">Led narrative teams and game production cycles through successful completion, managing complex creative projects from conception to launch.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="card-space p-6 md:p-8 rounded-lg flex items-start gap-4 md:gap-6 hover-lift">
-                        <div class="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg flex items-center justify-center border border-amber-600">
-                            <svg class="w-6 h-6 md:w-8 md:h-8 text-amber-900" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM15.657 14.243a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM11 17a1 1 0 102 0v-1a1 1 0 10-2 0v1zM5.757 15.657a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707zM5 10a1 1 0 01-1-1V8a1 1 0 012 0v1a1 1 0 01-1 1zM5.757 5.757a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707z"/>
-                            </svg>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-lg md:text-xl font-bold glow-text mb-2">INNOVATIVE DESIGN</h3>
-                            <p class="text-amber-50/80">Pioneered novel narrative techniques and storytelling approaches that push the boundaries of interactive media and player agency.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Materials Section -->
-        <section id="materials" class="scroll-section min-h-screen flex items-center py-16 md:py-20 px-4 md:px-6">
-            <div class="max-w-7xl mx-auto w-full">
-                <h2 class="section-title glow-text-bright">📜 BRIEFING MATERIALS & PORTFOLIO</h2>
-                
-                <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
-                    <!-- Resume Card - PROMINENT -->
-                    <div class="card-space p-8 md:p-12 rounded-lg flex flex-col items-center justify-center hover-lift group border-2 border-amber-600 bg-gradient-to-br from-amber-900/40 to-orange-900/30 pulse">
-                        <div class="mb-6 w-28 h-28 md:w-32 md:h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center border-3 border-amber-500 group-hover:shadow-2xl group-hover:shadow-amber-500/50 celestial-glow">
-                            <svg class="w-14 h-14 md:w-16 md:h-16 text-amber-900" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M4 4a2 2 0 012-2h6a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-3xl md:text-4xl font-bold glow-text mb-2 text-center">RESUME</h3>
-                        <p class="text-amber-50/80 mb-6 text-center">Professional CV and credentials</p>
-                        <button class="btn-primary">DOWNLOAD NOW</button>
-                    </div>
-                    
-                    <!-- Portfolio/Samples Card - PROMINENT with Dice -->
-                    <div class="card-space p-8 md:p-12 rounded-lg flex flex-col items-center justify-center hover-lift group border-2 border-amber-600 bg-gradient-to-br from-orange-900/40 to-amber-900/30 pulse">
-                        <div class="mb-6 w-28 h-28 md:w-32 md:h-32 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg flex items-center justify-center border-3 border-amber-500 group-hover:shadow-2xl group-hover:shadow-orange-500/50 celestial-glow" style="display: flex; align-items: center; justify-content: center;">
-                            <div class="text-4xl md:text-5xl font-bold text-amber-900" style="transform: rotate(-20deg);">🎲</div>
-                        </div>
-                        <h3 class="text-3xl md:text-4xl font-bold glow-text mb-2 text-center">PORTFOLIO</h3>
-                        <p class="text-amber-50/80 mb-6 text-center">Sample work & narrative design showcase</p>
-                        <button class="btn-primary">VIEW SAMPLES</button>
-                    </div>
-                </div>
-                
-                <!-- Links Section -->
-                <div class="card-space p-6 md:p-8 rounded-lg">
-                    <h3 class="text-xl md:text-2xl font-bold glow-text mb-6">CONNECT & COLLABORATE</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-                        <button class="btn-secondary w-full py-3 text-sm md:text-base">GITHUB</button>
-                        <button class="btn-secondary w-full py-3 text-sm md:text-base">LINKEDIN</button>
-                        <button class="btn-secondary w-full py-3 text-sm md:text-base">TWITTER</button>
-                        <button class="btn-secondary w-full py-3 text-sm md:text-base">EMAIL</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-    </main>
-    
-    <!-- Footer -->
-    <footer class="border-t-2 border-amber-700/60 bg-gradient-to-r from-amber-900/80 to-orange-900/80 backdrop-blur-md py-6 md:py-8">
-        <div class="max-w-7xl mx-auto px-4 md:px-6 text-center">
-            <p class="text-amber-50/90 mb-2">© 2026 Lucas Huang | Narrative Designer & Story Architect</p>
-            <p class="title-font text-xs md:text-sm glow-text">✦ Roll for the adventure ✦</p>
         </div>
+
+        <!-- EXPERIENCE PAGE -->
+        <div class="page" id="experience">
+            <div class="sheet-container">
+                <div class="ink-stain stain-1"></div>
+                <div class="ink-stain stain-2"></div>
+                
+                <h2 class="sheet-title">EXPERIENCE & QUESTS</h2>
+                <p class="sheet-subtitle">Adventures in Narrative Design</p>
+
+                <div class="content-section">
+                    <div class="section-header">◆ Primary Disciplines ◆</div>
+                    
+                    <div class="card">
+                        <div class="card-title">Narrative Design</div>
+                        <p class="card-text">Crafted branching storylines, character arcs, and dialogue systems that create meaningful player agency and emotional engagement.</p>
+                        <p class="card-meta">Years of Mastery: 8+ | Proficiency: Expert</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">Game Production Leadership</div>
+                        <p class="card-text">Led multidisciplinary teams through complete development cycles from conception to launch, managing schedules, budgets, and team coordination.</p>
+                        <p class="card-meta">Teams Led: 5+ | Projects Shipped: 12+</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">World Building & Lore</div>
+                        <p class="card-text">Developed rich, coherent game worlds with deep histories, factions, cultures, and environmental storytelling that enhance immersion.</p>
+                        <p class="card-meta">Worlds Created: 15+ | Depth Level: Extensive</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">Dialogue & Character Systems</div>
+                        <p class="card-text">Designed and implemented dynamic dialogue systems, character personalities, and relationship mechanics for interactive experiences.</p>
+                        <p class="card-meta">Characters Written: 200+ | Dialogue Trees: 50+</p>
+                    </div>
+                </div>
+
+                <div class="signature-line">~ Each quest completed strengthens the narrative ~</div>
+            </div>
+        </div>
+
+        <!-- PROJECTS PAGE -->
+        <div class="page" id="projects">
+            <div class="sheet-container">
+                <div class="ink-stain stain-1"></div>
+                <div class="ink-stain stain-3"></div>
+                
+                <h2 class="sheet-title">ACTIVE QUESTS</h2>
+                <p class="sheet-subtitle">Current Adventures</p>
+
+                <div class="content-section">
+                    <div class="section-header">◆ Notable Quests ◆</div>
+                    
+                    <div class="card">
+                        <div class="card-title">Epic Narrative Quest</div>
+                        <p class="card-text">A sweeping narrative experience with branching storylines and dynamic character arcs. Designed multiple endings based on player choices.</p>
+                        <p class="card-meta">Status: In Progress | Difficulty: Legendary</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">Character Development Quest</div>
+                        <p class="card-text">Crafted compelling character arcs and dialogue systems for immersive gameplay. Created 40+ unique NPCs with distinct personalities.</p>
+                        <p class="card-meta">Status: Active | Characters: 40+</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">World Building Expedition</div>
+                        <p class="card-text">Developed rich game worlds with deep lore, factions, and environmental storytelling. Created 3 complete fantasy worlds.</p>
+                        <p class="card-meta">Status: Ongoing | Worlds: 3 | Scope: Vast</p>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">◆ Personal Works ◆</div>
+                    
+                    <div class="card">
+                        <div class="card-title">Interactive Fiction Series</div>
+                        <p class="card-text">Choice-driven narratives exploring themes of identity and consequence.</p>
+                        <p class="card-meta">Status: In Development</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">Narrative Design Publication</div>
+                        <p class="card-text">Active publication on narrative design techniques and storytelling in interactive media.</p>
+                        <p class="card-meta">Status: Active | Posts: 25+</p>
+                    </div>
+                </div>
+
+                <div class="signature-line">~ Every quest brings new challenges ~</div>
+            </div>
+        </div>
+
+        <!-- PORTFOLIO PAGE -->
+        <div class="page" id="portfolio">
+            <div class="sheet-container">
+                <div class="ink-stain stain-2"></div>
+                <div class="ink-stain stain-3"></div>
+                
+                <h2 class="sheet-title">INVENTORY & ARTIFACTS</h2>
+                <p class="sheet-subtitle">Sample Works & Portfolio</p>
+
+                <div class="content-section">
+                    <div class="section-header">◆ Essential Artifacts ◆</div>
+                    
+                    <div class="card" style="background: linear-gradient(135deg, #FFF9F0 0%, #FFE8D6 100%); border-left: 4px solid #D2AA78;">
+                        <div class="card-title" style="color: #A0522D;">✦ RESUME ✦</div>
+                        <p class="card-text">Professional CV detailing credentials, experience, and accomplishments in narrative design and game production.</p>
+                        <button class="button" style="margin-top: 10px;">Download Resume</button>
+                    </div>
+                    
+                    <div class="card" style="background: linear-gradient(135deg, #FFF9F0 0%, #FFE8D6 100%); border-left: 4px solid #D2AA78;">
+                        <div class="card-title" style="color: #A0522D;">✦ PORTFOLIO SAMPLES ✦</div>
+                        <p class="card-text">Curated collection of narrative design work, dialogue systems, and world-building documentation from completed projects.</p>
+                        <button class="button" style="margin-top: 10px;">View Portfolio</button>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-header">◆ Connections & Networks ◆</div>
+                    <div class="button-row">
+                        <button class="button">GitHub</button>
+                        <button class="button">LinkedIn</button>
+                        <button class="button">Twitter</button>
+                        <button class="button">Email</button>
+                    </div>
+                </div>
+
+                <div class="signature-line">~ Treasures earned through dedication ~</div>
+            </div>
+        </div>
+
+        <!-- ACHIEVEMENTS PAGE -->
+        <div class="page" id="achievements">
+            <div class="sheet-container">
+                <div class="ink-stain stain-1"></div>
+                <div class="ink-stain stain-2"></div>
+                
+                <h2 class="sheet-title">ACHIEVEMENTS & HONORS</h2>
+                <p class="sheet-subtitle">Accolades Earned</p>
+
+                <div class="content-section">
+                    <div class="section-header">◆ Distinguished Honors ◆</div>
+                    
+                    <div class="card">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div style="font-size: 2.5rem;">⭐</div>
+                            <div>
+                                <div class="card-title">Storytelling Excellence</div>
+                                <p class="card-text">Recognized for creating compelling narratives that engage and inspire players worldwide.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div style="font-size: 2.5rem;">👑</div>
+                            <div>
+                                <div class="card-title">Game Production Leadership</div>
+                                <p class="card-text">Led game production teams through complete development cycles with successful launches.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <div style="font-size: 2.5rem;">🔆</div>
+                            <div>
+                                <div class="card-title">Innovative Design Practices</div>
+                                <p class="card-text">Pioneered narrative techniques that push the boundaries of interactive storytelling.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="signature-line">~ Hard-earned through countless adventures ~</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Lucas Huang | Narrative Designer & Creative Writer</p>
+        <p style="margin-top: 8px; font-style: italic;">The adventure continues...</p>
     </footer>
-    
-    <script src="script.js"></script>
-</body>
-</html>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
