@@ -5,36 +5,36 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom scrollbar - Parchment themed */
+/* Custom scrollbar - Pixel game themed */
 ::-webkit-scrollbar {
     width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    background: linear-gradient(to bottom, #E8DAC9, #D4C4B0);
+    background: linear-gradient(to bottom, #0a0e27, #0f1535);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #A0522D 0%, #8B7355 100%);
-    border-radius: 6px;
-    border: 2px solid #D4C4B0;
+    background: linear-gradient(180deg, #0096FF 0%, #0078CC 100%);
+    border-radius: 0;
+    border: 2px solid #0f1535;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #8B7355 0%, #A0522D 100%);
-    box-shadow: 0 0 10px rgba(160, 82, 45, 0.5);
+    background: linear-gradient(180deg, #0078CC 0%, #0096FF 100%);
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.8);
 }
 
 /* Selection styling */
 ::selection {
-    background: #A0522D;
-    color: #F5EFE0;
+    background: #0096FF;
+    color: #ffffff;
 }
 
 /* Focus states for accessibility */
 button:focus-visible,
 a:focus-visible {
-    outline: 2px solid #A0522D;
+    outline: 2px solid #0096FF;
     outline-offset: 2px;
 }
 
@@ -79,16 +79,16 @@ a:focus-visible {
 }
 
 .stat-box:hover {
-    background: linear-gradient(135deg, #FFE8D6 0%, #F5EFE0 100%);
-    box-shadow: inset 0 0 15px rgba(160, 82, 45, 0.15);
+    background: linear-gradient(135deg, #0f1b3c 0%, #0a0e27 100%);
+    box-shadow: inset 0 0 15px rgba(0, 150, 255, 0.15), 0 0 20px rgba(0, 150, 255, 0.2);
     transform: translateY(-3px);
 }
 
 /* Card animations on hover */
 .card:hover {
-    border-left-color: #654321;
-    box-shadow: inset 0 0 15px rgba(160, 82, 45, 0.2), 
-                0 5px 15px rgba(0, 0, 0, 0.1);
+    border-left-color: #0096FF;
+    box-shadow: inset 0 0 15px rgba(0, 150, 255, 0.2), 
+                0 0 20px rgba(0, 150, 255, 0.3);
 }
 
 /* Navigation tab animations */
