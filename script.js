@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    console.log('🎲 Welcome to Lucas Huang\'s Portfolio!');
-    console.log('✨ 💡 TIP: Use arrow keys (↑ ↓) to navigate through the chapters!');
-    console.log('🐉 🎭 May your creative journey be legendary!');
+    console.log('Welcome to Lucas Huang Portfolio!');
+    console.log('TIP: Use arrow keys (up/down) to navigate through the sections!');
+    console.log('May your creative journey be legendary!');
 });
