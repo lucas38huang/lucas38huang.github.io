@@ -57,22 +57,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('.button');
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
-            e.preventDefault();
             const action = this.getAttribute('data-action');
-            const text = this.textContent.trim();
             
-            if (action === 'view-resume') {
-                window.open('https://drive.google.com/file/d/1ZGkOtBNQvpkaJscaAnTDnvtwsoZmcPFr/view?usp=drive_link', '_blank');
-            } else if (action === 'view-portfolio') {
-                window.open('https://drive.google.com/drive/folders/1DF7yms-Ka1txa9r6dF0TY3yAU977nmkQ?usp=drive_link', '_blank');
-            } else if (text.includes('GitHub')) {
-                alert('GitHub link would open here');
-            } else if (text.includes('LinkedIn')) {
-                alert('LinkedIn link would open here');
-            } else if (text.includes('Email')) {
-                alert('Email would open here');
-            } else {
-                alert(text + ' link would open here');
+            // Allow anchor tags with href to navigate naturally
+            if (this.tagName === 'A' && this.getAttribute('href')) {
+                return; // Let the default link behavior happen
+            }
+            
+            // Only prevent default for actual button elements
+            if (this.tagName === 'BUTTON') {
+                e.preventDefault();
+                const text = this.textContent.trim();
+                
+                if (action === 'view-resume') {
+                    window.open('https://drive.google.com/file/d/1A04P865ELARlkfRPnL760w1loZIUrylT/view?usp=sharing', '_blank');
+                } else if (action === 'view-portfolio') {
+                    window.open('https://drive.google.com/drive/folders/1DF7yms-Ka1txa9r6dF0TY3yAU977nmkQ?usp=drive_link', '_blank');
+                } else {
+                    alert(text + ' link would open here');
+                }
             }
         });
     });
