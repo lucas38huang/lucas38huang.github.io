@@ -318,6 +318,19 @@
                 -4px 4px 0 rgba(0, 0, 0, 0.4),
                 inset -2px -2px 0 rgba(255, 255, 255, 0.05);
             position: relative;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 
+                inset 0 0 12px rgba(0, 150, 255, 0.2),
+                0 0 25px rgba(0, 150, 255, 0.4),
+                -4px 4px 0 rgba(0, 0, 0, 0.4),
+                inset -2px -2px 0 rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
         }
         
         .card::before {
@@ -640,39 +653,43 @@
                 <div class="content-section">
                     <div class="section-header">Featured Work</div>
                     
-                    <div class="card">
-                        <div class="card-title">Narrative-Driven Experience</div>
-                        <p class="card-text">Developed comprehensive narrative framework with branching storylines and dynamic character arcs. Implemented player choice systems that adapt narrative outcomes based on decision trees.</p>
-                        <p class="card-meta">Status: Active | Scope: Large-scale</p>
-                    </div>
+                    <a href="https://melikestuff.itch.io/reap-and-sew" target="_blank" class="card">
+                        <div class="card-title">Reap & Sew</div>
+                        <p class="card-text">A roguelite platformer.</p>
+                        <p class="card-meta">Producer, Lead narrative designer, ongoing</p>
+                    </a>
                     
-                    <div class="card">
-                        <div class="card-title">Character Development & Systems</div>
-                        <p class="card-text">Crafted character progression systems and dialogue mechanics for interactive gameplay. Created 40+ unique characters with distinct personalities, backgrounds, and relationship arcs.</p>
-                        <p class="card-meta">Status: Completed | 40+ characters</p>
-                    </div>
+                    <a href="https://citrus-seastar.itch.io/patron-oh-patron" target="_blank" class="card">
+                        <div class="card-title">Patron, Oh Patron</div>
+                        <p class="card-text">A visual novel.</p>
+                        <p class="card-meta">Creative director, sole writer, twine</p>
+                    </a>
                     
-                    <div class="card">
-                        <div class="card-title">World-Building Documentation</div>
-                        <p class="card-text">Developed extensive world documentation including lore systems, faction hierarchies, cultural frameworks, and environmental narratives for three complete game settings.</p>
-                        <p class="card-meta">Status: Ongoing | 3 worlds</p>
-                    </div>
+                    <a href="https://citrus-seastar.itch.io/godspeed-ember" target="_blank" class="card">
+                        <div class="card-title">Godspeed, Ember</div>
+                        <p class="card-text">A visual novel.</p>
+                        <p class="card-meta">Creative director, sole writer, twine</p>
+                    </a>
+
+                    <a href="https://store.steampowered.com/app/3670530/Tacit/" target="_blank" class="card">
+                        <div class="card-title">Tacit</div>
+                        <p class="card-text">A typing hero shooter.</p>
+                        <p class="card-meta">Lead writer</p>
+                    </a>
                 </div>
 
                 <div class="content-section">
                     <div class="section-header">Personal Works</div>
                     
-                    <div class="card">
-                        <div class="card-title">Interactive Fiction Series</div>
-                        <p class="card-text">Author of choice-driven narratives exploring themes of agency, consequence, and identity in interactive media.</p>
-                        <p class="card-meta">Status: In Development</p>
-                    </div>
+                    <a href="https://www.amazon.com/Children-Queen-Lucas-Huang-ebook/dp/B08DY7XCCH/ref=sr_1_1?crid=1PYI2EKV2VSFP&dib=eyJ2IjoiMSJ9.iLMB0HqmRk8XemRH2fBSUjGckO4dltL8bgwvCwJug0ksKrOJgTiXQSSqCAV5yAbH.5Q0i-j0dvl5zDvNIHdljLDSXoFTVhJ9HVx8dgGmSGy8&dib_tag=se&keywords=children+of+the+queen+Lucas+huang&qid=1777696990&sprefix=children+of+the+queen+lucas+huang%2Caps%2C174&sr=8-1" target="_blank" class="card">
+                        <div class="card-title">Children of the Queen</div>
+                        <p class="card-text">A novella.</p>
+                    </a>
                     
-                    <div class="card">
-                        <div class="card-title">Narrative Design Publication</div>
-                        <p class="card-text">Active writer on game narrative design, storytelling techniques, and interactive media craft. Published 25+ articles on industry best practices.</p>
-                        <p class="card-meta">Status: Active | 25+ published pieces</p>
-                    </div>
+                    <a href="https://www.amazon.com/Dreamlike-Coexistence-Anthology-Lucas-Huang-ebook/dp/B09DFP3BR5/ref=sr_1_1?crid=YMMJ3VQ9RU6X&dib=eyJ2IjoiMSJ9.Mwy36VckoKJRKtIh1u-JXw.HVOqQuWl1PK778PXA14fxfKchGMxehjjhipJOSJzViM&dib_tag=se&keywords=dreamlike+coexistence+lucas+huang&qid=1777697380&sprefix=dreamlike+coexistence+lucas+huang%2Caps%2C153&sr=8-1" target="_blank" class="card">
+                        <div class="card-title">Dreamlike Coexistence</div>
+                        <p class="card-text">An anthology.</p>
+                    </a>
                 </div>
             </div>
         </section>
