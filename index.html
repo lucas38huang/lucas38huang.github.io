@@ -320,7 +320,9 @@
             position: relative;
             text-decoration: none;
             color: inherit;
-            display: block;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
             transition: all 0.3s ease;
         }
 
@@ -343,6 +345,40 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%, rgba(0, 150, 255, 0.05) 100%);
             pointer-events: none;
             z-index: 1;
+        }
+        
+        .card-image {
+            flex-shrink: 0;
+            width: 140px;
+            height: 140px;
+            border: 3px solid #000000;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.3);
+        }
+        
+        .card-content {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .card-image-natural {
+            flex-shrink: 0;
+            width: 140px;
+            height: 140px;
+            border: 3px solid #000000;
+            object-fit: contain;
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.3);
+        }
+        
+        .card-image-large {
+            flex-shrink: 0;
+            width: 200px;
+            height: auto;
+            max-height: 300px;
+            border: 3px solid #000000;
+            object-fit: contain;
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.3);
         }
         
         .card-title {
@@ -373,6 +409,17 @@
             color: #87CEEB;
             margin-top: 8px;
             font-style: italic;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border: 4px solid #000000;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 30px auto;
+            box-shadow: 0 0 25px rgba(0, 150, 255, 0.4), -6px 6px 0 rgba(0, 0, 0, 0.3);
         }
         
         .highlight-card {
@@ -594,6 +641,7 @@
                 
                 <h2>Professional Profile</h2>
                 <p class="section-subtitle">Narrative Designer & Creative Writer</p>
+                <img src="me.png" alt="Lucas Huang" class="profile-image">
                 
                 <div class="content-section">
                     <div class="section-header">About me</div>
@@ -653,27 +701,39 @@
                     <div class="section-header">Featured Work</div>
                     
                     <a href="https://melikestuff.itch.io/reap-and-sew" target="_blank" class="card">
-                        <div class="card-title">Reap & Sew</div>
-                        <p class="card-text">A roguelite platformer.</p>
-                        <p class="card-meta">Producer, Lead narrative designer, ongoing</p>
+                        <img src="Logos/rns_cover.PNG" alt="Reap & Sew" class="card-image">
+                        <div class="card-content">
+                            <div class="card-title">Reap & Sew</div>
+                            <p class="card-text">A roguelite platformer.</p>
+                            <p class="card-meta">Producer, Lead narrative designer, ongoing</p>
+                        </div>
                     </a>
                     
                     <a href="https://citrus-seastar.itch.io/patron-oh-patron" target="_blank" class="card">
-                        <div class="card-title">Patron, Oh Patron</div>
-                        <p class="card-text">A visual novel.</p>
-                        <p class="card-meta">Creative director, sole writer, twine</p>
+                        <img src="Logos/pop_cover.PNG" alt="Patron, Oh Patron" class="card-image">
+                        <div class="card-content">
+                            <div class="card-title">Patron, Oh Patron</div>
+                            <p class="card-text">A visual novel.</p>
+                            <p class="card-meta">Creative director, sole writer, twine</p>
+                        </div>
                     </a>
                     
                     <a href="https://citrus-seastar.itch.io/godspeed-ember" target="_blank" class="card">
-                        <div class="card-title">Godspeed, Ember</div>
-                        <p class="card-text">A visual novel.</p>
-                        <p class="card-meta">Creative director, sole writer, twine</p>
+                        <img src="Logos/gse_cover.PNG" alt="Godspeed, Ember" class="card-image">
+                        <div class="card-content">
+                            <div class="card-title">Godspeed, Ember</div>
+                            <p class="card-text">A visual novel.</p>
+                            <p class="card-meta">Creative director, sole writer, twine</p>
+                        </div>
                     </a>
 
                     <a href="https://store.steampowered.com/app/3670530/Tacit/" target="_blank" class="card">
-                        <div class="card-title">Tacit</div>
-                        <p class="card-text">A typing hero shooter.</p>
-                        <p class="card-meta">Lead writer</p>
+                        <img src="Logos/tacit_cover1.png" alt="Tacit" class="card-image">
+                        <div class="card-content">
+                            <div class="card-title">Tacit</div>
+                            <p class="card-text">A typing hero shooter.</p>
+                            <p class="card-meta">Lead writer</p>
+                        </div>
                     </a>
                 </div>
 
@@ -681,13 +741,19 @@
                     <div class="section-header">Personal Works</div>
                     
                     <a href="https://www.amazon.com/Children-Queen-Lucas-Huang-ebook/dp/B08DY7XCCH/ref=sr_1_1?crid=1PYI2EKV2VSFP&dib=eyJ2IjoiMSJ9.iLMB0HqmRk8XemRH2fBSUjGckO4dltL8bgwvCwJug0ksKrOJgTiXQSSqCAV5yAbH.5Q0i-j0dvl5zDvNIHdljLDSXoFTVhJ9HVx8dgGmSGy8&dib_tag=se&keywords=children+of+the+queen+Lucas+huang&qid=1777696990&sprefix=children+of+the+queen+lucas+huang%2Caps%2C174&sr=8-1" target="_blank" class="card">
-                        <div class="card-title">Children of the Queen</div>
-                        <p class="card-text">A novella.</p>
+                        <img src="Logos/coq_cover.png" alt="Children of the Queen" class="card-image-large">
+                        <div class="card-content">
+                            <div class="card-title">Children of the Queen</div>
+                            <p class="card-text">A novella.</p>
+                        </div>
                     </a>
                     
                     <a href="https://www.amazon.com/Dreamlike-Coexistence-Anthology-Lucas-Huang-ebook/dp/B09DFP3BR5/ref=sr_1_1?crid=YMMJ3VQ9RU6X&dib=eyJ2IjoiMSJ9.Mwy36VckoKJRKtIh1u-JXw.HVOqQuWl1PK778PXA14fxfKchGMxehjjhipJOSJzViM&dib_tag=se&keywords=dreamlike+coexistence+lucas+huang&qid=1777697380&sprefix=dreamlike+coexistence+lucas+huang%2Caps%2C153&sr=8-1" target="_blank" class="card">
-                        <div class="card-title">Dreamlike Coexistence</div>
-                        <p class="card-text">An anthology.</p>
+                        <img src="Logos/dlc_cover.png" alt="Dreamlike Coexistence" class="card-image-large">
+                        <div class="card-content">
+                            <div class="card-title">Dreamlike Coexistence</div>
+                            <p class="card-text">An anthology.</p>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -706,11 +772,17 @@
                     <div class="section-header">Recognition</div>
                     
                     <div class="card">
-                        <div class="card-title">Scholastic Art & Writing Awards</div>
+                        <img src="Logos/key.png" alt="Scholastic Art & Writing Awards" class="card-image-large">
+                        <div class="card-content">
+                            <div class="card-title">Scholastic Art & Writing Awards</div>
+                        </div>
                     </div>
                     
                     <div class="card">
-                        <div class="card-title">2025 Alexander Nderitu Prize for World Literature Shortlist</div>
+                        <img src="Logos/anp2025.png" alt="2025 Alexander Nderitu Prize for World Literature" class="card-image-large">
+                        <div class="card-content">
+                            <div class="card-title">2025 Alexander Nderitu Prize for World Literature Shortlist</div>
+                        </div>
                     </div>
                 </div>
             </div>
